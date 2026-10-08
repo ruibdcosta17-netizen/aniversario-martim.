@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎂 Martim — Level 9!</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;overflow-x:hidden;font-family:Arial,sans-serif;color:white;text-align:center;background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.65)),linear-gradient(#59b9ff 0 45%,#55a83b 45% 63%,#70482f 63% 100%)}
+.sun{position:fixed;top:45px;right:7%;width:90px;height:90px;background:#fff06a;box-shadow:0 0 45px #fff06a;z-index:-1}
+.cloud{position:fixed;width:100px;height:30px;background:white;top:90px;left:10%;opacity:.85;box-shadow:25px -18px white,55px -10px white,80px 0 white}
+.cloud.two{top:170px;left:65%;transform:scale(.75)}
+.container{min-height:100vh;padding:35px 15px 80px}
+h1{margin-top:15px;font-size:clamp(40px,8vw,85px);text-shadow:6px 6px #222,10px 10px rgba(0,0,0,.25)}
+.green{color:#55ff55}.subtitle{margin-top:15px;font-size:clamp(19px,4vw,30px);font-weight:bold;text-shadow:3px 3px #222}
+.characters{display:flex;justify-content:center;align-items:center;gap:60px;margin:30px 0}
+.character{font-size:75px;filter:drop-shadow(5px 5px 0 #222);animation:float 1.8s infinite ease-in-out}.creeper{animation-delay:.4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.blocks{display:flex;justify-content:center;gap:8px;margin:25px auto}.block{width:60px;height:60px;border:4px solid rgba(0,0,0,.35);box-shadow:inset 7px 7px rgba(255,255,255,.12)}
+.grass{background:linear-gradient(#58b83e 0 30%,#70452d 30% 100%)}.dirt{background:repeating-linear-gradient(45deg,#74472d,#74472d 10px,#633d27 10px,#633d27 20px)}
+.title-counter{margin-top:35px;font-size:28px;text-shadow:3px 3px #222}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(90px,150px));justify-content:center;gap:15px;margin:25px auto}
+.box{background:#202020;border:5px solid #111;padding:18px 10px;box-shadow:7px 7px rgba(0,0,0,.5),inset 0 0 0 3px #444}
+.number{display:block;color:#55ff55;font-size:clamp(34px,6vw,55px);font-weight:bold;text-shadow:3px 3px #111}.label{display:block;margin-top:5px;font-size:13px;font-weight:bold}
+.xp{max-width:700px;margin:30px auto}.xp-title{font-weight:bold;margin-bottom:8px}.xp-bar{height:28px;background:#111;border:4px solid #222}.xp-fill{width:90%;height:100%;background:#65e52c}
+.message{max-width:760px;margin:30px auto;padding:25px;background:rgba(0,0,0,.75);border:4px solid #111;box-shadow:8px 8px rgba(0,0,0,.4);font-size:20px;line-height:1.6}
+.portal{width:125px;height:175px;margin:45px auto 15px;border:14px solid #222;background:repeating-linear-gradient(45deg,#9348d4,#9348d4 12px,#682ca6 12px,#682ca6 24px);box-shadow:0 0 25px #c05cff,0 0 70px #8d35d4;animation:portalGlow 1.5s infinite alternate}
+@keyframes portalGlow{from{filter:brightness(.9)}to{filter:brightness(1.35)}}
+#birthday{display:none;padding:80px 15px}#birthday h2{font-size:clamp(45px,9vw,90px);color:#55ff55;text-shadow:6px 6px #111}#birthday p{margin:20px;font-size:clamp(22px,5vw,32px);text-shadow:3px 3px #111}
+.confetti{position:fixed;top:-40px;z-index:100;font-size:30px;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media(max-width:650px){.countdown{grid-template-columns:repeat(2,1fr);max-width:400px}.characters{gap:25px}.character{font-size:60px}.block{width:40px;height:40px}.message{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="sun"></div><div class="cloud"></div><div class="cloud two"></div>
+<div class="container">
+<div id="normal">
+<h1>🎂 <span class="green">MARTIM</span> 🎂</h1>
+<div class="subtitle">🎮 Preparado para chegar ao LEVEL 9? 🎮</div>
+<div class="characters"><div class="character">🧑🏻</div><div class="character creeper">💚</div></div>
+<div class="blocks"><div class="block grass"></div><div class="block dirt"></div><div class="block grass"></div><div class="block dirt"></div><div class="block grass"></div><div class="block dirt"></div><div class="block grass"></div></div>
+<div class="title-counter">⛏️ CONTAGEM PARA OS 9 ANOS ⛏️</div>
+<div class="countdown">
+<div class="box"><span id="days" class="number">0</span><span class="label">DIAS</span></div>
+<div class="box"><span id="hours" class="number">00</span><span class="label">HORAS</span></div>
+<div class="box"><span id="minutes" class="number">00</span><span class="label">MINUTOS</span></div>
+<div class="box"><span id="seconds" class="number">00</span><span class="label">SEGUNDOS</span></div>
+</div>
+<div class="xp"><div class="xp-title">⭐ XP DO MARTIM — LEVEL 8 → LEVEL 9 ⭐</div><div class="xp-bar"><div class="xp-fill"></div></div></div>
+<div class="message">🎉 <strong>Martim!</strong> 🎉<br><br>Está quase a chegar o teu grande dia!<br><br>📅 <strong>29 DE OUTUBRO</strong><br><br>Vais passar para o:<br>🟩 <strong>LEVEL 9!</strong> 🟩<br><br>⛏️ Prepara a picareta!<br>🧱 Constrói a tua aventura!<br>💎 E prepara-te para um dia épico!</div>
+<div class="portal"></div><div>🟪 PORTAL PARA O ANIVERSÁRIO 🟪</div>
+</div>
+<div id="birthday">
+<h2>🎉 PARABÉNS MARTIM! 🎉</h2><p>🥳 CHEGASTE AO LEVEL 9! 🥳</p><p>⛏️ O TEU NOVO MUNDO COMEÇA AGORA! ⛏️</p><p style="font-size:70px;">🎂 🎁 🎈 💎 🟩 🥳</p>
+<div class="message">⭐ FELIZ 9.º ANIVERSÁRIO, MARTIM! ⭐<br><br>Que este novo nível seja cheio de aventuras, construções e momentos incríveis!</div>
+</div>
+</div>
+<script>
+const birthday=new Date("2026-10-29T00:00:00+00:00");
+function updateCountdown(){
+const now=new Date(),difference=birthday-now;
+if(difference<=0){document.getElementById("normal").style.display="none";document.getElementById("birthday").style.display="block";startConfetti();return}
+const days=Math.floor(difference/(1000*60*60*24));
+const hours=Math.floor((difference/(1000*60*60))%24);
+const minutes=Math.floor((difference/(1000*60))%60);
+const seconds=Math.floor((difference/1000)%60);
+document.getElementById("days").textContent=days;
+document.getElementById("hours").textContent=String(hours).padStart(2,"0");
+document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+}
+function startConfetti(){
+const emojis=["🎉","🎂","🎈","🎁","⛏️","💎","⭐","🟩"];
+setInterval(()=>{const confetti=document.createElement("div");confetti.className="confetti";confetti.textContent=emojis[Math.floor(Math.random()*emojis.length)];confetti.style.left=Math.random()*100+"vw";confetti.style.animationDuration=(2+Math.random()*4)+"s";document.body.appendChild(confetti);setTimeout(()=>confetti.remove(),6000)},120);
+}
+updateCountdown();setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>

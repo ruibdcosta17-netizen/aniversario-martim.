@@ -58,13 +58,22 @@ h1{margin-top:15px;font-size:clamp(40px,8vw,85px);text-shadow:6px 6px #222,10px 
 </div>
 <script>
 const birthday=new Date("2026-10-29T00:00:00+00:00");
+let confettiStarted=false;
 function updateCountdown(){
 const now=new Date(),difference=birthday-now;
-if(difference<=0){document.getElementById("normal").style.display="none";document.getElementById("birthday").style.display="block";startConfetti();return}
-const days=Math.ceil(difference/(1000*60*60*24));
-const hours=Math.floor((difference/(1000*60*60))%24);
-const minutes=Math.floor((difference/(1000*60))%60);
-const seconds=Math.floor((difference/1000)%60);
+if(difference<=0){
+document.getElementById("normal").style.display="none";
+document.getElementById("birthday").style.display="block";
+if(!confettiStarted){confettiStarted=true;startConfetti();}
+return;
+}
+// Calcula o tempo exato restante, como uma calculadora de horas e minutos.
+const days=Math.floor(difference/86400000);
+const remainderAfterDays=difference%86400000;
+const hours=Math.floor(remainderAfterDays/3600000);
+const remainderAfterHours=remainderAfterDays%3600000;
+const minutes=Math.floor(remainderAfterHours/60000);
+const seconds=Math.floor((remainderAfterHours%60000)/1000);
 document.getElementById("days").textContent=days;
 document.getElementById("hours").textContent=String(hours).padStart(2,"0");
 document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");

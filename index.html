@@ -48,6 +48,7 @@ h1{margin-top:15px;font-size:clamp(40px,8vw,85px);text-shadow:6px 6px #222,10px 
 <div class="box"><span id="seconds" class="number">00</span><span class="label">SEGUNDOS</span></div>
 </div>
 <button id="testBirthday" type="button" style="margin:12px auto;padding:13px 20px;background:#55ff55;color:#111;border:4px solid #111;font-weight:bold;font-size:16px;cursor:pointer;box-shadow:5px 5px rgba(0,0,0,.45)">🎉 TESTAR ANIMAÇÃO DE ANIVERSÁRIO</button>
+<button id="stopBirthdayTest" type="button" style="display:none;margin:12px auto;padding:13px 20px;background:#ff5555;color:white;border:4px solid #111;font-weight:bold;font-size:16px;cursor:pointer;box-shadow:5px 5px rgba(0,0,0,.45)">⏹️ PARAR TESTE E VOLTAR</button>
 <div class="xp"><div class="xp-title">⭐ XP DO MARTIM — LEVEL 8 → LEVEL 9 ⭐</div><div class="xp-bar"><div class="xp-fill"></div></div></div>
 <div class="message">🎉 <strong>Martim!</strong> 🎉<br><br>Está quase a chegar o teu grande dia!<br><br>📅 <strong>29 DE OUTUBRO</strong><br><br>Vais passar para o:<br>🟩 <strong>LEVEL 9!</strong> 🟩<br><br>⛏️ Prepara a picareta!<br>🧱 Constrói a tua aventura!<br>💎 E prepara-te para um dia épico!</div>
 <div class="portal"></div><div>🟪 PORTAL PARA O ANIVERSÁRIO 🟪</div>
@@ -86,10 +87,31 @@ function startConfetti(){
 const emojis=["🎉","🎂","🎈","🎁","⛏️","💎","⭐","🟩"];
 setInterval(()=>{const confetti=document.createElement("div");confetti.className="confetti";confetti.textContent=emojis[Math.floor(Math.random()*emojis.length)];confetti.style.left=Math.random()*100+"vw";confetti.style.animationDuration=(2+Math.random()*4)+"s";document.body.appendChild(confetti);setTimeout(()=>confetti.remove(),6000)},120);
 }
+let confettiInterval=null;
+function startConfetti(){
+const emojis=["🎉","🎂","🎈","🎁","⛏️","💎","⭐","🟩"];
+if(confettiInterval!==null)return;
+confettiInterval=setInterval(()=>{const confetti=document.createElement("div");confetti.className="confetti";confetti.textContent=emojis[Math.floor(Math.random()*emojis.length)];confetti.style.left=Math.random()*100+"vw";confetti.style.animationDuration=(2+Math.random()*4)+"s";document.body.appendChild(confetti);setTimeout(()=>confetti.remove(),6000)},120);
+}
+function stopConfetti(){
+if(confettiInterval!==null){clearInterval(confettiInterval);confettiInterval=null;}
+document.querySelectorAll(".confetti").forEach(item=>item.remove());
+}
 document.getElementById("testBirthday").addEventListener("click",()=>{
 document.getElementById("normal").style.display="none";
 document.getElementById("birthday").style.display="block";
-if(!confettiStarted){confettiStarted=true;startConfetti();}
+document.getElementById("testBirthday").style.display="none";
+document.getElementById("stopBirthdayTest").style.display="inline-block";
+confettiStarted=true;
+startConfetti();
+});
+document.getElementById("stopBirthdayTest").addEventListener("click",()=>{
+stopConfetti();
+document.getElementById("birthday").style.display="none";
+document.getElementById("normal").style.display="block";
+document.getElementById("testBirthday").style.display="inline-block";
+document.getElementById("stopBirthdayTest").style.display="none";
+updateCountdown();
 });
 updateCountdown();setInterval(updateCountdown,1000);
 </script>

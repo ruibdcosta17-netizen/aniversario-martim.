@@ -68,12 +68,14 @@ if(!confettiStarted){confettiStarted=true;startConfetti();}
 return;
 }
 // Calcula o tempo exato restante, como uma calculadora de horas e minutos.
-const days=Math.floor(difference/86400000);
+// Conta também o dia do aniversário na contagem de dias, como pediste.
+const days=Math.ceil(difference/86400000);
+// Horas, minutos e segundos mostram o tempo restante exato dentro do ciclo de 24 horas.
 const remainderAfterDays=difference%86400000;
 const hours=Math.floor(remainderAfterDays/3600000);
-const remainderAfterHours=remainderAfterDays%3600000;
+const remainderAfterHours=difference%3600000;
 const minutes=Math.floor(remainderAfterHours/60000);
-const seconds=Math.floor((remainderAfterHours%60000)/1000);
+const seconds=Math.floor((difference%60000)/1000);
 document.getElementById("days").textContent=days;
 document.getElementById("hours").textContent=String(hours).padStart(2,"0");
 document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
